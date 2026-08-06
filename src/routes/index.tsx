@@ -178,7 +178,7 @@ function Home() {
           className="pointer-events-none absolute -right-24 top-1/2 w-[52rem] max-w-none -translate-y-1/2 opacity-[0.05] mix-blend-screen"
         />
 
-        <div className="shell relative grid min-h-[100svh] items-center gap-14 pb-24 pt-44 sm:pt-48 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:pb-28 lg:pt-44">
+        <div className="shell relative grid min-h-[100svh] items-center gap-12 pb-24 pt-44 sm:pt-48 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10 lg:pb-28 lg:pt-44">
           <motion.div style={{ opacity: fade }}>
             <motion.span
               className="eyebrow"
@@ -219,19 +219,19 @@ function Home() {
           </motion.div>
 
           <motion.div
-            className="relative"
+            className="relative lg:translate-y-6 lg:pr-2 xl:pr-4"
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.7, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative aspect-[16/11] w-full overflow-hidden lg:scale-[1.18] lg:origin-center">
+            <div className="relative aspect-[16/10] w-full lg:origin-right lg:scale-[1.22]">
               <AnimatePresence mode="sync">
                 <motion.div
                   key={`glow-${car.name}`}
-                  className="pointer-events-none absolute left-1/2 top-1/2 size-[30rem] max-w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px] sm:size-[40rem]"
+                  className="pointer-events-none absolute left-1/2 top-[56%] size-[26rem] max-w-[110%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px] sm:size-[34rem]"
                   style={{ background: car.glow }}
                   initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 0.55, scale: 1 }}
+                  animate={{ opacity: 0.38, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.1 }}
                   transition={{ duration: 1.5, ease: "easeInOut" }}
                 />
@@ -242,17 +242,17 @@ function Home() {
                   key={car.name}
                   src={car.src}
                   alt={car.name}
-                  width={1408}
-                  height={912}
-                  className="absolute inset-0 size-full scale-[1.16] object-contain drop-shadow-[0_45px_60px_rgba(0,0,0,0.7)] will-change-transform"
-                  initial={{ opacity: 0, x: "85%", scale: 1.0 }}
-                  animate={{ opacity: 1, x: "0%", scale: 1.16 }}
-                  exit={{ opacity: 0, x: "85%", scale: 1.0 }}
+                  width={1600}
+                  height={1008}
+                  className="absolute inset-0 size-full object-contain drop-shadow-[0_45px_60px_rgba(0,0,0,0.7)] will-change-transform"
+                  initial={{ opacity: 0, x: "80%", scale: 0.94 }}
+                  animate={{ opacity: 1, x: "0%", scale: 1 }}
+                  exit={{ opacity: 0, x: "80%", scale: 0.94 }}
                   transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                 />
               </AnimatePresence>
 
-              <div className="pointer-events-none absolute inset-x-6 bottom-3 h-14 rounded-[100%] bg-black/60 blur-2xl" />
+              <div className="pointer-events-none absolute inset-x-10 bottom-4 h-12 rounded-[100%] bg-black/55 blur-2xl" />
             </div>
 
             <div className="mt-6 flex items-center justify-center gap-2 lg:justify-start">
