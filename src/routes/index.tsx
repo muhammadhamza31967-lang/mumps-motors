@@ -22,6 +22,7 @@ import {
 import { Counter, Reveal } from "@/components/motion/Reveal";
 import { useQuote } from "@/components/QuoteModal";
 import { QuoteCta } from "@/components/sections/QuoteCta";
+import { Faq } from "@/components/sections/Faq";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import heroCar from "@/assets/hero-car.png";
