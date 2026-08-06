@@ -465,8 +465,11 @@ function Home() {
       </section>
 
       {/* TRUST POINTS */}
-      <section className="section-pad relative bg-surface/50">
-        <div className="shell">
+      <section className="section-pad relative overflow-hidden bg-surface/50">
+        <div className="grid-noise pointer-events-none absolute inset-0 opacity-30" />
+        <div className="pointer-events-none absolute -right-40 top-10 size-[34rem] rounded-full bg-primary/12 blur-[150px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-0 size-[30rem] rounded-full bg-accent/10 blur-[150px]" />
+        <div className="shell relative">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">
               <span className="bg-gradient-red h-px w-10" />
@@ -476,15 +479,28 @@ function Home() {
               The details that keep drivers coming back
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="hairline mt-10 opacity-60" />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {trustPoints.map((point, i) => (
-              <Reveal key={point} delay={i * 0.05}>
-                <div className="luxe-card flex h-full items-start gap-4 p-6">
-                  <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-xl bg-accent/15 text-accent">
-                    <Handshake className="size-4" />
+              <Reveal
+                key={point.title}
+                delay={i * 0.08}
+                y={36}
+                className={point.span}
+              >
+                <article className="glass group relative h-full overflow-hidden rounded-[var(--radius-3xl)] p-8 shadow-[var(--shadow-luxe)] transition-all duration-500 ease-[var(--ease-luxe)] hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
+                  <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/20 opacity-0 blur-[70px] transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[var(--gradient-line)] opacity-40 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span className="relative grid size-16 place-items-center rounded-2xl bg-[var(--gradient-red)] text-white shadow-[0_18px_40px_-18px_oklch(0.532_0.235_28.5_/_0.9)] transition-transform duration-500 ease-[var(--ease-luxe)] group-hover:scale-110">
+                    <point.icon className="size-7" />
                   </span>
-                  <p className="text-sm font-medium leading-relaxed">{point}</p>
-                </div>
+                  <h3 className="relative mt-7 font-display text-lg font-semibold leading-snug">
+                    {point.title}
+                  </h3>
+                  <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {point.copy}
+                  </p>
+                </article>
               </Reveal>
             ))}
           </div>
