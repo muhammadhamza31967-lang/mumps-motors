@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Navigation, Phone, Send } from "lucide-react";
 import type { FormEvent } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { buildWhatsAppUrl, serviceNames, site } from "@/lib/site";
@@ -101,19 +101,32 @@ function Contact() {
                 </div>
               ))}
 
-              <div className="luxe-card p-6">
-                <div className="flex items-center gap-3">
-                  <Clock className="size-5 text-accent" />
-                  <h2 className="font-display text-lg font-semibold">Opening Hours</h2>
+              <div className="luxe-card overflow-hidden p-2">
+                <div className="relative overflow-hidden rounded-[calc(var(--radius-3xl)-0.4rem)] border border-white/10 shadow-[var(--shadow-luxe)]">
+                  <iframe
+                    title={`Map showing ${site.name} at ${site.address}`}
+                    src={site.mapEmbedUrl}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="block h-[22rem] w-full border-0 grayscale-[0.6] contrast-[1.05] invert-[0.92] hue-rotate-180 sm:h-[26rem]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/10" />
                 </div>
-                <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
-                  {site.hours.map((row) => (
-                    <li key={row.day} className="flex justify-between gap-4">
-                      <span>{row.day}</span>
-                      <span className="text-foreground">{row.time}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="px-4 pb-4 pt-5">
+                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+                    Find Us
+                  </p>
+                  <p className="mt-1.5 text-sm font-medium">{site.address}</p>
+                  <a
+                    href={site.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-book mt-5 w-full"
+                  >
+                    <Navigation className="size-4" />
+                    Get Directions
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>

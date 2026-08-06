@@ -3,6 +3,7 @@ import { ArrowRight, Car, Check, Cog, Disc3, Gauge, Wrench } from "lucide-react"
 import { Reveal } from "@/components/motion/Reveal";
 import { useQuote } from "@/components/QuoteModal";
 import { QuoteCta } from "@/components/sections/QuoteCta";
+import { Faq } from "@/components/sections/Faq";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import svcServicing from "@/assets/svc-servicing.jpg";
@@ -109,6 +110,41 @@ const services = [
   },
 ];
 
+const serviceFaqs = [
+  {
+    q: "What is included in a full service?",
+    a: "A full service covers an engine oil and filter change, fluid top-ups and checks, brake inspection, battery test, plus a general safety and roadworthiness inspection. You receive a written report of anything that needs attention.",
+  },
+  {
+    q: "How do I know when my brakes need repair?",
+    a: "Squealing or grinding noises, a soft or vibrating pedal, longer stopping distances or a dashboard warning light all point to brake wear. We inspect pads, discs and fluid and only replace what has genuinely reached its limit.",
+  },
+  {
+    q: "What are the signs of suspension problems?",
+    a: "Uneven tyre wear, excessive bouncing, pulling to one side, knocking over bumps or a vague steering feel usually mean worn shocks, bushes or steering components. A suspension diagnostic pinpoints the exact cause.",
+  },
+  {
+    q: "Should I repair, fit a replacement engine, or rebuild?",
+    a: "It depends on the damage, mileage and vehicle value. We inspect the engine first, then explain the realistic options — component repair, a replacement engine fitting or a full rebuild — with costs and expected lifespan for each.",
+  },
+  {
+    q: "How long does an engine rebuild take?",
+    a: "A complete rebuild typically takes several days to a couple of weeks, depending on parts availability and the extent of internal work. We agree a timeframe up front and keep you updated at each stage.",
+  },
+  {
+    q: "Do you carry out vehicle diagnostics?",
+    a: "Yes. We use modern diagnostic equipment to read fault codes and live data, then verify the fault physically before recommending repairs — so you are not paying to replace parts on guesswork.",
+  },
+  {
+    q: "How do I book a service?",
+    a: "Use the Book This Service button on any service above, request a quote, or message us on WhatsApp. Tell us your vehicle make, model and the work required and we will confirm a slot that suits you.",
+  },
+  {
+    q: "What parts do you use, and are repairs guaranteed?",
+    a: "We fit OEM or premium-grade equivalent parts only, and all workmanship is completed to a standard we would accept on our own vehicles. Part and labour guarantees are confirmed in writing with your quote.",
+  },
+];
+
 function Services() {
   const { open } = useQuote();
 
@@ -199,6 +235,12 @@ function Services() {
           ))}
         </div>
       </section>
+
+      <Faq
+        items={serviceFaqs}
+        eyebrow="Service FAQs"
+        title="Everything you need to know about our work"
+      />
 
       <QuoteCta />
     </>
