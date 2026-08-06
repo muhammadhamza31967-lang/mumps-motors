@@ -57,7 +57,6 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const stats = [
 const showcase = [
   {
     name: "Silver luxury sports coupe",
