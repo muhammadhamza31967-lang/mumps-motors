@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Car, Check, Cog, Disc3, Gauge, Wrench } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { useQuote } from "@/components/QuoteModal";
+import { QuoteCta } from "@/components/sections/QuoteCta";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import svcServicing from "@/assets/svc-servicing.jpg";
@@ -188,7 +189,7 @@ function Services() {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={open} className="btn-ghost mt-9">
+                  <button onClick={open} className="btn-book mt-9">
                     Book This Service
                     <ArrowRight className="size-4" />
                   </button>
@@ -198,6 +199,8 @@ function Services() {
           ))}
         </div>
       </section>
+
+      <QuoteCta />
     </>
   );
 }

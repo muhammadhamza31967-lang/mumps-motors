@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
-  Banknote,
   Car,
   ClipboardCheck,
   Clock,
@@ -22,6 +21,7 @@ import {
 } from "lucide-react";
 import { Counter, Reveal } from "@/components/motion/Reveal";
 import { useQuote } from "@/components/QuoteModal";
+import { QuoteCta } from "@/components/sections/QuoteCta";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import heroCar from "@/assets/hero-car.png";
@@ -125,14 +125,54 @@ const services = [
 ];
 
 const trustPoints = [
-  "Skilled & Qualified Technicians",
-  "Modern Equipment",
-  "Quality Replacement Parts",
-  "Affordable Pricing",
-  "Honest Recommendations",
-  "Customer-Focused Service",
-  "Quick Turnaround Times",
-  "High-Quality Workmanship",
+  {
+    icon: Wrench,
+    title: "Skilled & Qualified Technicians",
+    copy: "Factory-trained hands on every vehicle that enters the workshop.",
+    span: "lg:col-span-2",
+  },
+  {
+    icon: Gauge,
+    title: "Modern Equipment",
+    copy: "Dealer-level diagnostics and calibrated tooling.",
+    span: "",
+  },
+  {
+    icon: Cog,
+    title: "Quality Replacement Parts",
+    copy: "OEM and premium-grade components only.",
+    span: "",
+  },
+  {
+    icon: HandCoins,
+    title: "Affordable Pricing",
+    copy: "Premium workmanship without dealership markups.",
+    span: "",
+  },
+  {
+    icon: Handshake,
+    title: "Honest Recommendations",
+    copy: "We only advise the work your vehicle genuinely needs.",
+    span: "lg:col-span-2",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Customer-Focused Service",
+    copy: "Updates at every stage, from booking to handover.",
+    span: "lg:col-span-2",
+  },
+  {
+    icon: Clock,
+    title: "Quick Turnaround Times",
+    copy: "Efficient scheduling that respects your time.",
+    span: "",
+  },
+  {
+    icon: BadgeCheck,
+    title: "High-Quality Workmanship",
+    copy: "Finished to a standard we'd accept on our own cars.",
+    span: "",
+  },
 ];
 
 const process = [
@@ -340,9 +380,17 @@ function Home() {
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
-              <Reveal key={service.title} delay={i * 0.07} className={i === 0 ? "lg:row-span-2" : ""}>
-                <article className="luxe-card animated-border group h-full overflow-hidden">
-                  <div className={`relative overflow-hidden ${i === 0 ? "h-72 lg:h-[26rem]" : "h-52"}`}>
+              <Reveal
+                key={service.title}
+                delay={i * 0.07}
+                className={i === 0 ? "h-full lg:row-span-2" : "h-full"}
+              >
+                <article className="luxe-card animated-border group flex h-full flex-col overflow-hidden">
+                  <div
+                    className={`relative overflow-hidden ${
+                      i === 0 ? "h-72 lg:h-auto lg:flex-[0_0_63%]" : "h-52 shrink-0"
+                    }`}
+                  >
                     <img
                       src={service.image}
                       alt={`${service.title} at Mumps Motors`}
@@ -356,12 +404,22 @@ function Home() {
                       <service.icon className="size-5" />
                     </span>
                   </div>
-                  <div className="p-7">
-                    <h3 className="font-display text-xl font-semibold">{service.title}</h3>
+                  <div
+                    className={`flex flex-1 flex-col justify-end p-7 ${
+                      i === 0 ? "lg:px-9 lg:pb-9 lg:pt-7" : ""
+                    }`}
+                  >
+                    <h3
+                      className={`font-display font-semibold ${
+                        i === 0 ? "text-xl lg:text-2xl" : "text-xl"
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.copy}</p>
                     <Link
                       to="/services"
-                      className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary transition group-hover:gap-3"
+                      className="mt-5 inline-flex items-center gap-2 self-start text-xs font-semibold uppercase tracking-[0.18em] text-primary transition group-hover:gap-3"
                     >
                       Learn More <ArrowRight className="size-4" />
                     </Link>
@@ -425,8 +483,11 @@ function Home() {
       </section>
 
       {/* TRUST POINTS */}
-      <section className="section-pad relative bg-surface/50">
-        <div className="shell">
+      <section className="section-pad relative overflow-hidden bg-surface/50">
+        <div className="grid-noise pointer-events-none absolute inset-0 opacity-30" />
+        <div className="pointer-events-none absolute -right-40 top-10 size-[34rem] rounded-full bg-primary/12 blur-[150px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-0 size-[30rem] rounded-full bg-accent/10 blur-[150px]" />
+        <div className="shell relative">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">
               <span className="bg-gradient-red h-px w-10" />
@@ -436,15 +497,28 @@ function Home() {
               The details that keep drivers coming back
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="hairline mt-10 opacity-60" />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {trustPoints.map((point, i) => (
-              <Reveal key={point} delay={i * 0.05}>
-                <div className="luxe-card flex h-full items-start gap-4 p-6">
-                  <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-xl bg-accent/15 text-accent">
-                    <Handshake className="size-4" />
+              <Reveal
+                key={point.title}
+                delay={i * 0.08}
+                y={36}
+                className={point.span}
+              >
+                <article className="glass group relative h-full overflow-hidden rounded-[var(--radius-3xl)] p-8 shadow-[var(--shadow-luxe)] transition-all duration-500 ease-[var(--ease-luxe)] hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
+                  <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/20 opacity-0 blur-[70px] transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[var(--gradient-line)] opacity-40 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span className="relative grid size-16 place-items-center rounded-2xl bg-[var(--gradient-red)] text-white shadow-[0_18px_40px_-18px_oklch(0.532_0.235_28.5_/_0.9)] transition-transform duration-500 ease-[var(--ease-luxe)] group-hover:scale-110">
+                    <point.icon className="size-7" />
                   </span>
-                  <p className="text-sm font-medium leading-relaxed">{point}</p>
-                </div>
+                  <h3 className="relative mt-7 font-display text-lg font-semibold leading-snug">
+                    {point.title}
+                  </h3>
+                  <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {point.copy}
+                  </p>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -485,32 +559,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden">
-        <div className="shell relative py-20 lg:py-28">
-          <div className="luxe-card animated-border relative overflow-hidden px-8 py-16 text-center sm:px-16">
-            <div className="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[36rem] rounded-full bg-primary/35 blur-[110px]" />
-            <img
-              src={logoUrl}
-              alt=""
-              aria-hidden
-              className="pointer-events-none absolute -bottom-16 left-1/2 w-[40rem] max-w-none -translate-x-1/2 opacity-[0.06]"
-            />
-            <Reveal>
-              <span className="eyebrow justify-center">
-                <Banknote className="size-4 text-primary" />
-                No obligation quote
-              </span>
-              <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.1rem,5vw,4rem)] font-bold leading-[1.03]">
-                Keep Your Vehicle Running <span className="text-chrome">Like New</span>
-              </h2>
-              <button onClick={open} className="btn-red mt-10">
-                Request Free Quote
-                <ArrowRight className="size-4" />
-              </button>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <QuoteCta />
     </>
   );
 }
