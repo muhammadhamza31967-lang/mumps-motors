@@ -123,7 +123,7 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                 />
                 <button
                   type="submit"
-                  className="sm:col-span-2 mt-1 rounded-xl bg-[var(--gradient-red)] px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-primary-foreground transition hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
+                  className="btn-red sm:col-span-2 mt-1 w-full"
                 >
                   Send via WhatsApp
                 </button>
