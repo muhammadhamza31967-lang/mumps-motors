@@ -58,6 +58,25 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
+const showcase = [
+  {
+    name: "Silver luxury sports coupe",
+    src: heroCar,
+    glow: "radial-gradient(circle, rgba(105,162,201,0.55) 0%, rgba(105,162,201,0) 70%)",
+  },
+  {
+    name: "Dark red performance coupe",
+    src: heroCar2,
+    glow: "radial-gradient(circle, rgba(216,0,0,0.55) 0%, rgba(216,0,0,0) 70%)",
+  },
+  {
+    name: "Black premium luxury SUV",
+    src: heroCar3,
+    glow: "radial-gradient(circle, rgba(222,227,226,0.42) 0%, rgba(222,227,226,0) 70%)",
+  },
+];
+
+const stats = [
   { label: "Years Experience", value: 15, suffix: "+" },
   { label: "Happy Customers", value: 4200, suffix: "+" },
   { label: "Vehicles Repaired", value: 9800, suffix: "+" },
@@ -130,8 +149,15 @@ function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const carX = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((i) => (i + 1) % showcase.length), 5200);
+    return () => clearInterval(id);
+  }, []);
+
+  const car = showcase[active];
 
   return (
     <>
@@ -154,7 +180,7 @@ function Home() {
           className="pointer-events-none absolute -right-24 top-1/2 w-[52rem] max-w-none -translate-y-1/2 opacity-[0.05] mix-blend-screen"
         />
 
-        <div className="shell relative grid min-h-[100svh] items-center gap-10 pb-24 pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:pt-28">
+        <div className="shell relative grid min-h-[100svh] items-center gap-14 pb-24 pt-44 sm:pt-48 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:pb-28 lg:pt-44">
           <motion.div style={{ opacity: fade }}>
             <motion.span
               className="eyebrow"
@@ -167,7 +193,7 @@ function Home() {
             </motion.span>
 
             <motion.h1
-              className="mt-6 max-w-2xl font-display text-[clamp(2.3rem,6vw,4.6rem)] font-bold leading-[1.02]"
+              className="mt-7 max-w-xl font-display text-[clamp(2rem,5.1vw,3.95rem)] font-bold leading-[1.04]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -176,20 +202,8 @@ function Home() {
               <span className="text-chrome">Mechanical Repairs</span> You Can Trust
             </motion.h1>
 
-            <motion.p
-              className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.78, duration: 0.9 }}
-            >
-              Keep your vehicle running at its best with expert servicing, repairs, and engine
-              solutions from Mumps Motor. Our experienced mechanics provide reliable workmanship,
-              honest advice, and quality service to ensure your vehicle performs safely and
-              efficiently.
-            </motion.p>
-
             <motion.div
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-10 flex flex-wrap gap-4 lg:mt-12"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.9, duration: 0.8 }}
@@ -203,44 +217,75 @@ function Home() {
                 Call Now
               </a>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-            className="relative hidden lg:block"
-            style={{ x: carX }}
-            initial={{ opacity: 0, x: 90 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.7, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <img
-              src={heroCar}
-              alt="Silver luxury sports coupe"
-              width={1408}
-              height={912}
-              className="w-[125%] max-w-none translate-x-16 drop-shadow-[0_50px_60px_rgba(0,0,0,0.65)]"
-            />
-            <div className="absolute -bottom-6 left-0 z-10 space-y-3">
+            <motion.div
+              className="mt-12 flex flex-wrap gap-3 sm:gap-4 lg:mt-14"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2, duration: 0.8 }}
+            >
               {[
                 { icon: ShieldCheck, label: "Quality Service" },
                 { icon: Users, label: "Professional Mechanics" },
                 { icon: Clock, label: "Fast Turnaround" },
-              ].map((card, i) => (
-                <motion.div
-                  key={card.label}
-                  className="glass flex items-center gap-3 rounded-2xl px-4 py-3"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 2 + i * 0.16, duration: 0.7 }}
-                >
-                  <motion.span
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 3.4 + i, repeat: Infinity, ease: "easeInOut" }}
-                    className="grid size-9 place-items-center rounded-xl bg-primary/15 text-primary"
-                  >
+              ].map((card) => (
+                <div key={card.label} className="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+                  <span className="grid size-9 place-items-center rounded-xl bg-primary/15 text-primary">
                     <card.icon className="size-4" />
-                  </motion.span>
-                  <span className="text-sm font-medium">{card.label}</span>
-                </motion.div>
+                  </span>
+                  <span className="text-xs font-medium sm:text-sm">{card.label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.7, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="relative aspect-[16/11] w-full overflow-hidden">
+              <AnimatePresence mode="sync">
+                <motion.div
+                  key={`glow-${car.name}`}
+                  className="pointer-events-none absolute left-1/2 top-1/2 size-[26rem] max-w-[110%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px] sm:size-[34rem]"
+                  style={{ background: car.glow }}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 0.55, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.1 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
+              </AnimatePresence>
+
+              <AnimatePresence mode="sync">
+                <motion.img
+                  key={car.name}
+                  src={car.src}
+                  alt={car.name}
+                  width={1408}
+                  height={912}
+                  className="absolute inset-0 size-full object-contain drop-shadow-[0_40px_55px_rgba(0,0,0,0.65)] will-change-transform"
+                  initial={{ opacity: 0, x: "-42%", scale: 0.92 }}
+                  animate={{ opacity: 1, x: "0%", scale: 1 }}
+                  exit={{ opacity: 0, x: "42%", scale: 0.92 }}
+                  transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </AnimatePresence>
+
+              <div className="pointer-events-none absolute inset-x-6 bottom-3 h-14 rounded-[100%] bg-black/60 blur-2xl" />
+            </div>
+
+            <div className="mt-6 flex items-center justify-center gap-2 lg:justify-start">
+              {showcase.map((item, i) => (
+                <button
+                  key={item.name}
+                  aria-label={`Show ${item.name}`}
+                  onClick={() => setActive(i)}
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    i === active ? "w-10 bg-primary" : "w-4 bg-white/20"
+                  }`}
+                />
               ))}
             </div>
           </motion.div>
