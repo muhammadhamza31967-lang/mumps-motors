@@ -217,7 +217,7 @@ function Home() {
               height={912}
               className="w-[125%] max-w-none translate-x-16 drop-shadow-[0_50px_60px_rgba(0,0,0,0.65)]"
             />
-            <div className="absolute -left-6 top-4 space-y-3">
+            <div className="absolute -bottom-6 left-0 z-10 space-y-3">
               {[
                 { icon: ShieldCheck, label: "Quality Service" },
                 { icon: Users, label: "Professional Mechanics" },
