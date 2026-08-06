@@ -224,7 +224,7 @@ function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.7, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative aspect-[16/11] w-full">
+            <div className="relative aspect-[16/10] w-full lg:scale-[1.1] lg:origin-right">
               <AnimatePresence mode="sync">
                 <motion.div
                   key={`glow-${car.name}`}
@@ -242,8 +242,8 @@ function Home() {
                   key={car.name}
                   src={car.src}
                   alt={car.name}
-                  width={1408}
-                  height={912}
+                  width={1600}
+                  height={1008}
                   className="absolute inset-0 size-full object-contain drop-shadow-[0_45px_60px_rgba(0,0,0,0.7)] will-change-transform"
                   initial={{ opacity: 0, x: "80%", scale: 0.94 }}
                   animate={{ opacity: 1, x: "0%", scale: 1 }}
