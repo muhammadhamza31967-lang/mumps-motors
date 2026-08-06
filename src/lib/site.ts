@@ -2,9 +2,15 @@ export const site = {
   name: "Mumps Motors",
   legal: "Mumps Motor",
   tagline: "Professional Car Servicing & Mechanical Repairs",
-  phone: "+27 60 000 0000",
-  phoneHref: "tel:+27600000000",
-  whatsapp: "27600000000",
+  phone: "07835 745238",
+  phoneHref: "tel:+447835745238",
+  phoneAlt: "07511 166369",
+  phoneAltHref: "tel:+447511166369",
+  phones: [
+    { label: "07835 745238", href: "tel:+447835745238" },
+    { label: "07511 166369", href: "tel:+447511166369" },
+  ],
+  whatsapp: "447835745238",
   email: "info@mumpsmotors.com",
   address: "Unit 1, 3 Garden St, OL1 3UY, Oldham, United Kingdom",
   mapsUrl:

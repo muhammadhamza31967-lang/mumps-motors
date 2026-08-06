@@ -21,8 +21,8 @@ export function Faq({
       <div className="pointer-events-none absolute -left-40 top-24 size-[30rem] rounded-full bg-primary/10 blur-[150px]" />
       <div className="pointer-events-none absolute -right-40 bottom-0 size-[28rem] rounded-full bg-accent/10 blur-[150px]" />
       <div className="shell relative">
-        <Reveal className="max-w-2xl">
-          <span className="eyebrow">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <span className="eyebrow justify-center">
             <span className="bg-gradient-red h-px w-10" />
             {eyebrow}
           </span>

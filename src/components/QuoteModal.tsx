@@ -125,7 +125,7 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                   type="submit"
                   className="btn-red sm:col-span-2 mt-1 w-full"
                 >
-                  Send via WhatsApp
+                  Submit
                 </button>
               </form>
             </motion.div>
