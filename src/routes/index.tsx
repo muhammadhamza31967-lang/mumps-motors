@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
-  Banknote,
   Car,
   ClipboardCheck,
   Clock,
@@ -22,6 +21,7 @@ import {
 } from "lucide-react";
 import { Counter, Reveal } from "@/components/motion/Reveal";
 import { useQuote } from "@/components/QuoteModal";
+import { QuoteCta } from "@/components/sections/QuoteCta";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import heroCar from "@/assets/hero-car.png";
