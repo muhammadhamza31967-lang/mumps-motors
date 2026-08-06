@@ -6,7 +6,11 @@ export const site = {
   phoneHref: "tel:+27600000000",
   whatsapp: "27600000000",
   email: "info@mumpsmotors.com",
-  address: "Unit 4, Industrial Park, Johannesburg",
+  address: "Unit 1, 3 Garden St, OL1 3UY, Oldham, United Kingdom",
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Unit+1%2C+3+Garden+St%2C+OL1+3UY%2C+Oldham%2C+United+Kingdom",
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=Unit%201%2C%203%20Garden%20St%2C%20OL1%203UY%2C%20Oldham%2C%20United%20Kingdom&output=embed",
   hours: [
     { day: "Monday – Friday", time: "08:00 – 17:30" },
     { day: "Saturday", time: "08:00 – 13:00" },
