@@ -156,22 +156,33 @@ const trustPoints = [
     span: "lg:col-span-2",
   },
   {
-    icon: HeartHandshake,
-    title: "Customer-Focused Service",
-    copy: "Updates at every stage, from booking to handover.",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: Clock,
-    title: "Quick Turnaround Times",
-    copy: "Efficient scheduling that respects your time.",
-    span: "",
-  },
-  {
     icon: BadgeCheck,
     title: "High-Quality Workmanship",
     copy: "Finished to a standard we'd accept on our own cars.",
     span: "",
+  },
+];
+
+const faqs = [
+  {
+    q: "How often should I service my vehicle?",
+    a: "Most vehicles benefit from a full service every 12 months or 10,000–15,000 miles, whichever comes first. If you cover high mileage or drive mostly short urban trips, we usually recommend an interim check halfway between services.",
+  },
+  {
+    q: "Do I need an appointment?",
+    a: "Booking ahead guarantees a bay and a technician for your vehicle, so we always recommend it. That said, we do our best to accommodate urgent brake, suspension or warning-light issues on the same day.",
+  },
+  {
+    q: "Do you work on all vehicle makes and models?",
+    a: "Yes. Our technicians service and repair a wide range of makes and models, from everyday hatchbacks to premium and performance vehicles, using dealer-level diagnostics and quality replacement parts.",
+  },
+  {
+    q: "How long does a typical service take?",
+    a: "An interim service usually takes around 1–2 hours and a full service around half a day. Larger jobs such as engine fittings or rebuilds are quoted with a clear timeframe before any work begins.",
+  },
+  {
+    q: "Do you provide quotes before starting repairs?",
+    a: "Always. We inspect the vehicle, explain exactly what it needs, and give you a written, no-obligation quote. Nothing is carried out until you approve the work and the cost.",
   },
 ];
 
