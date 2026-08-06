@@ -256,6 +256,35 @@
   }
 }
 
+@utility btn-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.9rem 1.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #d80000;
+  border: 2px solid #d80000;
+  box-shadow: 0 18px 40px -18px oklch(0.532 0.235 28.5 / 0.85);
+  transition:
+    transform 0.35s var(--ease-luxe),
+    background-color 0.35s var(--ease-luxe),
+    color 0.35s var(--ease-luxe),
+    box-shadow 0.35s var(--ease-luxe);
+  &:hover {
+    transform: translateY(-4px);
+    background-color: #ffffff;
+    color: #d80000;
+    border-color: #d80000;
+    box-shadow: 0 24px 50px -18px oklch(0.532 0.235 28.5 / 0.55);
+  }
+}
+
 @utility eyebrow {
   display: inline-flex;
   align-items: center;
