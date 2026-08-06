@@ -150,8 +150,8 @@ function Contact() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <form onSubmit={handleSubmit} className="glass rounded-[2rem] p-7 sm:p-10">
+          <Reveal delay={0.12} className="h-full">
+            <form onSubmit={handleSubmit} className="glass flex h-full flex-col rounded-[2rem] p-7 sm:p-10">
               <h2 className="font-display text-2xl font-bold">Send an Enquiry</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Submitting opens WhatsApp with your details pre-filled.
