@@ -18,7 +18,6 @@ import {
   Search,
   ShieldCheck,
   Sparkles,
-  Users,
   Wrench,
 } from "lucide-react";
 import { Counter, Reveal } from "@/components/motion/Reveal";
@@ -217,25 +216,6 @@ function Home() {
               </a>
             </motion.div>
 
-            <motion.div
-              className="mt-12 flex flex-wrap gap-3 sm:gap-4 lg:mt-14"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2, duration: 0.8 }}
-            >
-              {[
-                { icon: ShieldCheck, label: "Quality Service" },
-                { icon: Users, label: "Professional Mechanics" },
-                { icon: Clock, label: "Fast Turnaround" },
-              ].map((card) => (
-                <div key={card.label} className="glass flex items-center gap-3 rounded-2xl px-4 py-3">
-                  <span className="grid size-9 place-items-center rounded-xl bg-primary/15 text-primary">
-                    <card.icon className="size-4" />
-                  </span>
-                  <span className="text-xs font-medium sm:text-sm">{card.label}</span>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -244,11 +224,11 @@ function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.7, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative aspect-[16/11] w-full overflow-hidden">
+            <div className="relative aspect-[16/11] w-full overflow-hidden lg:scale-[1.18] lg:origin-center">
               <AnimatePresence mode="sync">
                 <motion.div
                   key={`glow-${car.name}`}
-                  className="pointer-events-none absolute left-1/2 top-1/2 size-[26rem] max-w-[110%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px] sm:size-[34rem]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 size-[30rem] max-w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px] sm:size-[40rem]"
                   style={{ background: car.glow }}
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 0.55, scale: 1 }}
@@ -264,11 +244,11 @@ function Home() {
                   alt={car.name}
                   width={1408}
                   height={912}
-                  className="absolute inset-0 size-full object-contain drop-shadow-[0_40px_55px_rgba(0,0,0,0.65)] will-change-transform"
-                  initial={{ opacity: 0, x: "-42%", scale: 0.92 }}
-                  animate={{ opacity: 1, x: "0%", scale: 1 }}
-                  exit={{ opacity: 0, x: "42%", scale: 0.92 }}
-                  transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0 size-full scale-[1.16] object-contain drop-shadow-[0_45px_60px_rgba(0,0,0,0.7)] will-change-transform"
+                  initial={{ opacity: 0, x: "85%", scale: 1.0 }}
+                  animate={{ opacity: 1, x: "0%", scale: 1.16 }}
+                  exit={{ opacity: 0, x: "85%", scale: 1.0 }}
+                  transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                 />
               </AnimatePresence>
 
