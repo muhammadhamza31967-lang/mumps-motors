@@ -114,7 +114,7 @@ function Contact() {
                       </p>
                       <a
                         href={item.href}
-                        className="mt-1 block break-words font-medium hover:text-primary"
+                        className="mt-1 block break-words text-[0.92rem] leading-snug font-medium hover:text-primary sm:text-[0.85rem] lg:text-[0.9rem]"
                       >
                         {item.value}
                       </a>
