@@ -125,14 +125,54 @@ const services = [
 ];
 
 const trustPoints = [
-  "Skilled & Qualified Technicians",
-  "Modern Equipment",
-  "Quality Replacement Parts",
-  "Affordable Pricing",
-  "Honest Recommendations",
-  "Customer-Focused Service",
-  "Quick Turnaround Times",
-  "High-Quality Workmanship",
+  {
+    icon: Wrench,
+    title: "Skilled & Qualified Technicians",
+    copy: "Factory-trained hands on every vehicle that enters the workshop.",
+    span: "lg:col-span-2",
+  },
+  {
+    icon: Gauge,
+    title: "Modern Equipment",
+    copy: "Dealer-level diagnostics and calibrated tooling.",
+    span: "",
+  },
+  {
+    icon: Cog,
+    title: "Quality Replacement Parts",
+    copy: "OEM and premium-grade components only.",
+    span: "",
+  },
+  {
+    icon: HandCoins,
+    title: "Affordable Pricing",
+    copy: "Premium workmanship without dealership markups.",
+    span: "",
+  },
+  {
+    icon: Handshake,
+    title: "Honest Recommendations",
+    copy: "We only advise the work your vehicle genuinely needs.",
+    span: "lg:col-span-2",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Customer-Focused Service",
+    copy: "Updates at every stage, from booking to handover.",
+    span: "lg:col-span-2",
+  },
+  {
+    icon: Clock,
+    title: "Quick Turnaround Times",
+    copy: "Efficient scheduling that respects your time.",
+    span: "",
+  },
+  {
+    icon: BadgeCheck,
+    title: "High-Quality Workmanship",
+    copy: "Finished to a standard we'd accept on our own cars.",
+    span: "",
+  },
 ];
 
 const process = [
