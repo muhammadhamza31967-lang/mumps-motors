@@ -380,9 +380,17 @@ function Home() {
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
-              <Reveal key={service.title} delay={i * 0.07} className={i === 0 ? "lg:row-span-2" : ""}>
-                <article className="luxe-card animated-border group h-full overflow-hidden">
-                  <div className={`relative overflow-hidden ${i === 0 ? "h-72 lg:h-[26rem]" : "h-52"}`}>
+              <Reveal
+                key={service.title}
+                delay={i * 0.07}
+                className={i === 0 ? "h-full lg:row-span-2" : "h-full"}
+              >
+                <article className="luxe-card animated-border group flex h-full flex-col overflow-hidden">
+                  <div
+                    className={`relative overflow-hidden ${
+                      i === 0 ? "h-72 lg:h-auto lg:flex-[0_0_63%]" : "h-52 shrink-0"
+                    }`}
+                  >
                     <img
                       src={service.image}
                       alt={`${service.title} at Mumps Motors`}
@@ -396,12 +404,22 @@ function Home() {
                       <service.icon className="size-5" />
                     </span>
                   </div>
-                  <div className="p-7">
-                    <h3 className="font-display text-xl font-semibold">{service.title}</h3>
+                  <div
+                    className={`flex flex-1 flex-col justify-end p-7 ${
+                      i === 0 ? "lg:px-9 lg:pb-9 lg:pt-7" : ""
+                    }`}
+                  >
+                    <h3
+                      className={`font-display font-semibold ${
+                        i === 0 ? "text-xl lg:text-2xl" : "text-xl"
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.copy}</p>
                     <Link
                       to="/services"
-                      className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary transition group-hover:gap-3"
+                      className="mt-5 inline-flex items-center gap-2 self-start text-xs font-semibold uppercase tracking-[0.18em] text-primary transition group-hover:gap-3"
                     >
                       Learn More <ArrowRight className="size-4" />
                     </Link>
