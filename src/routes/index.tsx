@@ -399,7 +399,7 @@ function Home() {
                 <article className="luxe-card animated-border group flex h-full flex-col overflow-hidden">
                   <div
                     className={`relative overflow-hidden ${
-                      i === 0 ? "h-72 lg:h-auto lg:flex-[0_0_63%]" : "h-52 shrink-0"
+                      i === 0 ? "h-80 lg:h-auto lg:flex-[0_0_75%]" : "h-52 shrink-0"
                     }`}
                   >
                     <img
@@ -509,13 +509,13 @@ function Home() {
             </h2>
           </Reveal>
           <div className="hairline mt-10 opacity-60" />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {trustPoints.map((point, i) => (
               <Reveal
                 key={point.title}
                 delay={i * 0.08}
                 y={36}
-                className={point.span}
+                className="h-full"
               >
                 <article className="glass group relative h-full overflow-hidden rounded-[var(--radius-3xl)] p-8 shadow-[var(--shadow-luxe)] transition-all duration-500 ease-[var(--ease-luxe)] hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
                   <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/20 opacity-0 blur-[70px] transition-opacity duration-500 group-hover:opacity-100" />
@@ -568,6 +568,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <Faq items={faqs} eyebrow="FAQs" title="Answers before you book" />
 
       {/* CTA */}
       <QuoteCta />
