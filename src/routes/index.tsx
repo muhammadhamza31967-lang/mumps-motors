@@ -224,7 +224,7 @@ function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.7, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative aspect-[16/10] w-full lg:scale-[1.1] lg:origin-right">
+            <div className="relative aspect-[16/10] w-full lg:origin-right lg:scale-[1.22]">
               <AnimatePresence mode="sync">
                 <motion.div
                   key={`glow-${car.name}`}
