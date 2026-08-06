@@ -11,6 +11,11 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { FloatingActions } from "@/components/layout/FloatingActions";
+import { Preloader } from "@/components/layout/Preloader";
+import { QuoteProvider } from "@/components/QuoteModal";
 
 function NotFoundComponent() {
   return (
@@ -77,21 +82,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Mumps Motors | Premium Car Service & Auto Repair" },
+      {
+        name: "description",
+        content:
+          "Mumps Motors delivers premium vehicle servicing, brake repairs, suspension work, engine fittings and engine rebuilds with expert workmanship.",
+      },
+      { name: "author", content: "Mumps Motors" },
+      { property: "og:site_name", content: "Mumps Motors" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AutoRepair",
+          name: "Mumps Motors",
+          description:
+            "Professional car servicing, auto repair, brake repairs, suspension repair, engine fittings and engine rebuilds.",
+          telephone: "+27600000000",
+          email: "info@mumpsmotors.com",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -119,8 +146,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <QuoteProvider>
+        <Preloader />
+        <Navbar />
+        <main className="min-h-screen">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <Footer />
+        <FloatingActions />
+      </QuoteProvider>
     </QueryClientProvider>
   );
 }
