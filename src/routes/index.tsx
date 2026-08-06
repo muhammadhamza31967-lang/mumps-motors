@@ -340,33 +340,54 @@ function Home() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
+      {/* ABOUT PREVIEW */}
       <section className="section-pad relative overflow-hidden">
-        <div className="pointer-events-none absolute -left-40 top-20 size-[32rem] rounded-full bg-accent/10 blur-[140px]" />
-        <div className="shell relative">
-          <Reveal className="max-w-2xl">
-            <span className="eyebrow">
-              <span className="bg-gradient-red h-px w-10" />
-              Why Choose Us
-            </span>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.4rem)] font-bold leading-[1.05]">
-              Engineering standards you can <span className="text-primary">feel</span> on the road
-            </h2>
+        <div className="shell grid items-center gap-14 lg:grid-cols-2">
+          <Reveal>
+            <div className="relative">
+              <div className="bg-gradient-red absolute -left-4 -top-4 size-32 rounded-3xl opacity-30 blur-2xl" />
+              <img
+                src={mechanic}
+                alt="Professional mechanic servicing a luxury car engine"
+                loading="lazy"
+                width={1200}
+                height={1408}
+                className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-luxe)]"
+              />
+              <div className="glass absolute -bottom-8 right-4 rounded-2xl px-6 py-5 sm:right-8">
+                <p className="font-display text-3xl font-bold text-chrome">
+                  <Counter to={15} suffix="+" />
+                </p>
+                <p className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  Years in the workshop
+                </p>
+              </div>
+            </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {whyChoose.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.06}>
-                <article className="luxe-card animated-border h-full p-8">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-primary/12 text-primary">
-                    <item.icon className="size-5" />
-                  </span>
-                  <h3 className="mt-6 font-display text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.12}>
+            <span className="eyebrow">
+              <span className="bg-gradient-red h-px w-10" />
+              About Mumps Motor
+            </span>
+            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold leading-[1.06]">
+              Reliable automotive solutions, delivered honestly
+            </h2>
+            <p className="mt-6 leading-relaxed text-muted-foreground">
+              At Mumps Motor, we are passionate about delivering reliable automotive solutions that
+              keep our customers safe on the road. Our workshop provides professional servicing,
+              mechanical repairs, brake repairs, suspension work, engine fittings and complete engine
+              rebuilds for a wide range of vehicles.
+            </p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              Our goal is simple—to provide honest advice, quality workmanship and dependable service
+              that customers can trust.
+            </p>
+            <Link to="/about" className="btn-red mt-9">
+              Learn More
+              <ArrowRight className="size-4" />
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -444,54 +465,33 @@ function Home() {
         </div>
       </section>
 
-      {/* ABOUT PREVIEW */}
+      {/* WHY CHOOSE US */}
       <section className="section-pad relative overflow-hidden">
-        <div className="shell grid items-center gap-14 lg:grid-cols-2">
-          <Reveal>
-            <div className="relative">
-              <div className="bg-gradient-red absolute -left-4 -top-4 size-32 rounded-3xl opacity-30 blur-2xl" />
-              <img
-                src={mechanic}
-                alt="Professional mechanic servicing a luxury car engine"
-                loading="lazy"
-                width={1200}
-                height={1408}
-                className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-luxe)]"
-              />
-              <div className="glass absolute -bottom-8 right-4 rounded-2xl px-6 py-5 sm:right-8">
-                <p className="font-display text-3xl font-bold text-chrome">
-                  <Counter to={15} suffix="+" />
-                </p>
-                <p className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
-                  Years in the workshop
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.12}>
+        <div className="pointer-events-none absolute -left-40 top-20 size-[32rem] rounded-full bg-accent/10 blur-[140px]" />
+        <div className="shell relative">
+          <Reveal className="max-w-2xl">
             <span className="eyebrow">
               <span className="bg-gradient-red h-px w-10" />
-              About Mumps Motor
+              Why Choose Us
             </span>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold leading-[1.06]">
-              Reliable automotive solutions, delivered honestly
+            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.4rem)] font-bold leading-[1.05]">
+              Engineering standards you can <span className="text-primary">feel</span> on the road
             </h2>
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              At Mumps Motor, we are passionate about delivering reliable automotive solutions that
-              keep our customers safe on the road. Our workshop provides professional servicing,
-              mechanical repairs, brake repairs, suspension work, engine fittings and complete engine
-              rebuilds for a wide range of vehicles.
-            </p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Our goal is simple—to provide honest advice, quality workmanship and dependable service
-              that customers can trust.
-            </p>
-            <Link to="/about" className="btn-red mt-9">
-              Learn More
-              <ArrowRight className="size-4" />
-            </Link>
           </Reveal>
+
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {whyChoose.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.06}>
+                <article className="luxe-card animated-border h-full p-8">
+                  <span className="grid size-12 place-items-center rounded-2xl bg-primary/12 text-primary">
+                    <item.icon className="size-5" />
+                  </span>
+                  <h3 className="mt-6 font-display text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

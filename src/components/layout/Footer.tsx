@@ -22,7 +22,7 @@ export function Footer() {
   return (
     <footer className="bg-gradient-night relative overflow-hidden border-t border-white/8">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-primary/12 blur-[120px]" />
-      <div className="shell relative py-16 lg:py-24">
+      <div className="shell relative pb-11 pt-16 lg:pb-16 lg:pt-24">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.2fr]">
           <div>
             <Logo className="h-14 w-auto" />
@@ -114,18 +114,32 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="hairline mt-14" />
-        <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
+        <div className="hairline mt-12" />
+        <div className="mt-5 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="btn-ghost !px-5 !py-2.5 !text-[0.65rem]"
-          >
-            <ArrowUp className="size-3.5" />
-            Back to Top
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="inline-flex items-center gap-2 transition hover:text-foreground"
+            >
+              <ArrowUp className="size-3.5" />
+              Back to Top
+            </button>
+            <span aria-hidden className="h-3 w-px bg-white/15" />
+            <p>
+              Designed and Developed by{" "}
+              <a
+                href="https://nexenstrategy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary underline-offset-4 transition hover:text-foreground hover:underline"
+              >
+                Nexen Strategy
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
