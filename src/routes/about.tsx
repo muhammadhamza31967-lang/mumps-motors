@@ -207,6 +207,8 @@ function About() {
           </div>
         </div>
       </section>
+
+      <QuoteCta />
     </>
   );
 }
