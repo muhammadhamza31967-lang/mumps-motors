@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -26,6 +26,8 @@ import { useQuote } from "@/components/QuoteModal";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import heroCar from "@/assets/hero-car.png";
+import heroCar2 from "@/assets/hero-car-2.png";
+import heroCar3 from "@/assets/hero-car-3.png";
 import mechanic from "@/assets/mechanic.jpg";
 import svcServicing from "@/assets/svc-servicing.jpg";
 import svcBrakes from "@/assets/svc-brakes.jpg";
