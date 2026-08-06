@@ -2,9 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Compass, Eye, Gem, HeartHandshake, ShieldCheck, Target } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { useQuote } from "@/components/QuoteModal";
+import { QuoteCta } from "@/components/sections/QuoteCta";
 import { logoUrl } from "@/components/brand/Logo";
 import heroGarage from "@/assets/hero-garage.jpg";
 import mechanic from "@/assets/mechanic.jpg";
+import aboutMission from "@/assets/about-mission.jpg";
+import aboutVision from "@/assets/about-vision.jpg";
 
 export const Route = createFileRoute("/about")({
   component: About,
@@ -112,29 +115,68 @@ function About() {
         </div>
       </section>
 
-      <section className="section-pad bg-surface/50">
-        <div className="shell grid gap-6 lg:grid-cols-2">
+      <section className="section-pad relative overflow-hidden bg-surface/50">
+        <div className="pointer-events-none absolute -right-40 top-0 size-[32rem] rounded-full bg-primary/10 blur-[150px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-0 size-[30rem] rounded-full bg-accent/10 blur-[150px]" />
+        <div className="shell relative space-y-20 lg:space-y-28">
           {[
             {
               icon: Target,
-              title: "Mission",
+              eyebrow: "Our Mission",
+              title: "Performance, protected by precision",
               copy: "To provide reliable, affordable and high-quality automotive services that maximize vehicle performance while building lasting relationships with our customers through honesty, professionalism and exceptional workmanship.",
+              image: aboutMission,
+              alt: "Premium sports car raised on a lift inside the Mumps Motors workshop",
+              flip: false,
             },
             {
               icon: Eye,
-              title: "Vision",
+              eyebrow: "Our Vision",
+              title: "The workshop drivers recommend first",
               copy: "To become the preferred automotive workshop known for quality repairs, customer satisfaction and trusted mechanical expertise.",
+              image: aboutVision,
+              alt: "Master technician inspecting a luxury car engine bay",
+              flip: true,
             },
-          ].map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.1}>
-              <article className="luxe-card animated-border h-full p-9">
-                <span className="grid size-12 place-items-center rounded-2xl bg-primary/12 text-primary">
-                  <item.icon className="size-5" />
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
+            >
+              <Reveal className={item.flip ? "lg:order-2" : ""}>
+                <span className="eyebrow">
+                  <span className="bg-gradient-red h-px w-10" />
+                  {item.eyebrow}
                 </span>
-                <h2 className="mt-6 font-display text-2xl font-semibold">{item.title}</h2>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{item.copy}</p>
-              </article>
-            </Reveal>
+                <span className="mt-6 grid size-14 place-items-center rounded-2xl bg-[var(--gradient-red)] text-white shadow-[0_18px_40px_-18px_oklch(0.532_0.235_28.5_/_0.9)]">
+                  <item.icon className="size-6" />
+                </span>
+                <h2 className="mt-6 font-display text-[clamp(1.9rem,3.6vw,3rem)] font-bold leading-[1.06]">
+                  {item.title}
+                </h2>
+                <p className="mt-6 leading-relaxed text-muted-foreground">{item.copy}</p>
+                <div className="hairline mt-9 max-w-sm opacity-70" />
+              </Reveal>
+
+              <Reveal delay={0.14} className={item.flip ? "lg:order-1" : ""}>
+                <div className="relative">
+                  <div className="bg-gradient-red absolute -left-5 -top-5 size-32 rounded-3xl opacity-25 blur-2xl" />
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    width={1200}
+                    height={1000}
+                    className="relative aspect-[6/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-luxe)]"
+                  />
+                  <div className="glass absolute -bottom-6 left-6 rounded-2xl px-5 py-4">
+                    <p className="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
+                      Mumps Motor Workshop
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
           ))}
         </div>
       </section>
