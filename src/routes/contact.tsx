@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle, Navigation, Phone, Send } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import type { FormEvent } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { buildWhatsAppUrl, serviceNames, site } from "@/lib/site";
@@ -73,66 +73,85 @@ function Contact() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-          <Reveal>
-            <div className="space-y-4">
-              {[
-                { icon: Phone, label: "Phone", value: site.phone, href: site.phoneHref },
-                { icon: MessageCircle, label: "WhatsApp", value: site.phone, href: `https://wa.me/${site.whatsapp}` },
-                { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
-                { icon: MapPin, label: "Workshop", value: site.address },
-              ].map((item) => (
-                <div key={item.label} className="luxe-card flex items-start gap-4 p-6">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary">
-                    <item.icon className="size-5" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
-                      {item.label}
-                    </p>
-                    {item.href ? (
-                      <a href={item.href} className="mt-1 block break-words font-medium hover:text-primary">
-                        {item.value}
+        <div className="mt-16 grid items-stretch gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+          <Reveal className="h-full">
+            <div className="flex h-full flex-col gap-4">
+              <div className="luxe-card flex items-start gap-4 p-5">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary">
+                  <Phone className="size-5" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+                    Phone
+                  </p>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
+                    {site.phones.map((p) => (
+                      <a key={p.href} href={p.href} className="font-medium hover:text-primary">
+                        {p.label}
                       </a>
-                    ) : (
-                      <p className="mt-1 font-medium">{item.value}</p>
-                    )}
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
 
-              <div className="luxe-card overflow-hidden p-2">
-                <div className="relative overflow-hidden rounded-[calc(var(--radius-3xl)-0.4rem)] border border-white/10 shadow-[var(--shadow-luxe)]">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {[
+                  {
+                    icon: MessageCircle,
+                    label: "WhatsApp",
+                    value: site.phone,
+                    href: `https://wa.me/${site.whatsapp}`,
+                  },
+                  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
+                ].map((item) => (
+                  <div key={item.label} className="luxe-card flex items-start gap-4 p-5">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary">
+                      <item.icon className="size-5" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+                        {item.label}
+                      </p>
+                      <a
+                        href={item.href}
+                        className="mt-1 block break-words font-medium hover:text-primary"
+                      >
+                        {item.value}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="luxe-card flex items-start gap-4 p-5">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary">
+                  <MapPin className="size-5" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+                    Workshop
+                  </p>
+                  <p className="mt-1 font-medium">{site.address}</p>
+                </div>
+              </div>
+
+              <div className="luxe-card flex min-h-[18rem] flex-1 overflow-hidden p-2">
+                <div className="relative w-full overflow-hidden rounded-[calc(var(--radius-3xl)-0.4rem)] border border-white/10 shadow-[var(--shadow-luxe)]">
                   <iframe
                     title={`Map showing ${site.name} at ${site.address}`}
                     src={site.mapEmbedUrl}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="block h-[22rem] w-full border-0 grayscale-[0.6] contrast-[1.05] invert-[0.92] hue-rotate-180 sm:h-[26rem]"
+                    className="block size-full min-h-[18rem] border-0 grayscale-[0.6] contrast-[1.05] invert-[0.92] hue-rotate-180"
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/10" />
-                </div>
-                <div className="px-4 pb-4 pt-5">
-                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
-                    Find Us
-                  </p>
-                  <p className="mt-1.5 text-sm font-medium">{site.address}</p>
-                  <a
-                    href={site.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-book mt-5 w-full"
-                  >
-                    <Navigation className="size-4" />
-                    Get Directions
-                  </a>
                 </div>
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <form onSubmit={handleSubmit} className="glass rounded-[2rem] p-7 sm:p-10">
+          <Reveal delay={0.12} className="h-full">
+            <form onSubmit={handleSubmit} className="glass flex h-full flex-col rounded-[2rem] p-7 sm:p-10">
               <h2 className="font-display text-2xl font-bold">Send an Enquiry</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Submitting opens WhatsApp with your details pre-filled.
@@ -165,7 +184,7 @@ function Contact() {
                 />
                 <button type="submit" className="btn-red sm:col-span-2 w-full">
                   <Send className="size-4" />
-                  Submit via WhatsApp
+                  Submit
                 </button>
               </div>
             </form>

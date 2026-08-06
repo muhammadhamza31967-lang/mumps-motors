@@ -77,9 +77,13 @@ export function Footer() {
             <ul className="mt-5 space-y-4 text-sm text-muted-foreground">
               <li className="flex gap-3">
                 <Phone className="mt-0.5 size-4 shrink-0 text-primary" />
-                <a href={site.phoneHref} className="hover:text-foreground">
-                  {site.phone}
-                </a>
+                <span className="flex flex-col gap-1">
+                  {site.phones.map((p) => (
+                    <a key={p.href} href={p.href} className="hover:text-foreground">
+                      {p.label}
+                    </a>
+                  ))}
+                </span>
               </li>
               <li className="flex gap-3">
                 <Mail className="mt-0.5 size-4 shrink-0 text-primary" />
