@@ -156,7 +156,7 @@ function Home() {
     return () => clearInterval(id);
   }, []);
 
-  const car = showcase[active];
+  const car = showcase[active] ?? showcase[0]!;
 
   return (
     <>
