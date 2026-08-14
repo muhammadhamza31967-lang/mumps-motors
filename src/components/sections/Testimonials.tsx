@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Quote, Star, ArrowUpRight } from "lucide-react";
+import { Quote, Star, ArrowUpRight, Info } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
 const REVIEWS_URL = "https://share.google/U6Wk8tUcp0xwe8rTo";
