@@ -1,73 +1,80 @@
 import { useState } from "react";
-import { Quote, Star, ArrowUpRight } from "lucide-react";
+import { Quote, Star, ArrowUpRight, Info } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
-type Testimonial = { name: string; vehicle: string; review: string };
+const REVIEWS_URL = "https://share.google/U6Wk8tUcp0xwe8rTo";
+
+type Testimonial = { name: string; vehicle: string; review: string; profileUrl?: string };
 
 const testimonials: Testimonial[] = [
   {
-    name: "James Whitfield",
-    vehicle: "BMW 3 Series — Full Service",
+    name: "Yas",
+    vehicle: "Ford Transit — Engine Rebuild",
     review:
-      "Faultless from start to finish. They talked me through every item on the report and the car has never driven better. Genuinely premium treatment.",
+      "Had my engine rebuilt from them for a Ford transit absolute great work cannot recommend them enough honestly go above and beyond for all their customers will definitely be back for services! Great team and great work",
   },
   {
-    name: "Aisha Rahman",
-    vehicle: "Audi A4 — Brake Replacement",
+    name: "Reece Gradwell",
+    profileUrl: REVIEWS_URL,
+    vehicle: "Google Review",
     review:
-      "Booked in on WhatsApp within minutes and the brakes were done the same day. Honest pricing and no upselling whatsoever.",
+      "Excellent service from Mumps Motor Ltd! The team were friendly, professional and did a fantastic job on my vehicle. They kept me informed throughout and the work was completed quickly and to a very high standard. A special mention to Muhad, who went above and beyond to help — knowledgeable, honest and made the whole experience stress-free. Highly recommend to anyone looking for reliable vehicle repairs and outstanding customer service.",
   },
   {
-    name: "Daniel Okoye",
-    vehicle: "Mercedes C-Class — Suspension",
+    name: "Tayler Green",
+    profileUrl: REVIEWS_URL,
+    vehicle: "Google Review",
     review:
-      "The ride quality is transformed. You can tell these guys actually care about the work rather than just turning cars around.",
+      "Great customer experience, car was handled well and the issue was fixed would recommend if you a want cheap and high grade service.",
   },
   {
-    name: "Sophie Marsden",
-    vehicle: "VW Golf GTI — Engine Rebuild",
+    name: "Junaid Khan",
+    vehicle: "Google Review",
     review:
-      "A full rebuild done properly, with photo updates the whole way through. Completely trust them with my car now.",
-  },
-  {
-    name: "Michael Grant",
-    vehicle: "Range Rover Sport — Diagnostics",
-    review:
-      "Two other garages couldn't find the fault. Mumps Motors diagnosed it in an afternoon and fixed it for a fair price.",
-  },
-  {
-    name: "Priya Sharma",
-    vehicle: "Ford Focus — Full Servicing",
-    review:
-      "Immaculate workshop, superb communication and the car came back cleaner than I left it. Highly recommended.",
+      "Solid company no messing about and straight forward with you in regards to your vehicle. Highly recommend",
   },
 ];
 
 function Card({ item }: { item: Testimonial }) {
   return (
-    <article className="glass group/card relative w-[19rem] shrink-0 overflow-hidden rounded-[var(--radius-3xl)] p-7 shadow-[var(--shadow-luxe)] transition-all duration-500 ease-[var(--ease-luxe)] hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)] sm:w-[23rem]">
+    <article className="glass group/card relative flex h-[24rem] w-[19rem] shrink-0 flex-col overflow-hidden rounded-[var(--radius-3xl)] p-7 shadow-[var(--shadow-luxe)] transition-all duration-500 ease-[var(--ease-luxe)] hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)] sm:w-[23rem]">
       <div className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-primary/15 blur-[60px] transition-opacity duration-500 group-hover/card:opacity-100 opacity-60" />
-      <span className="bg-gradient-red relative grid size-11 place-items-center rounded-xl text-white shadow-[var(--shadow-glow)]">
+      <span className="bg-gradient-red relative grid size-11 shrink-0 place-items-center rounded-xl text-white shadow-[var(--shadow-glow)]">
         <Quote className="size-5" />
       </span>
-      <div className="mt-5 flex gap-1">
+      <div className="mt-5 flex shrink-0 gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star key={i} className="size-4 fill-primary text-primary" />
         ))}
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.review}</p>
+      <div className="mt-4 min-h-0 flex-1 overflow-hidden">
+        <p className="line-clamp-6 text-sm leading-relaxed text-muted-foreground">{item.review}</p>
+      </div>
       <div className="hairline my-5 opacity-60" />
-      <p className="font-display text-base font-semibold">{item.name}</p>
-      <p className="mt-1 text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
-        {item.vehicle}
-      </p>
+      <div className="shrink-0">
+        {item.profileUrl ? (
+          <a
+            href={item.profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-display text-base font-semibold underline-offset-4 transition-colors hover:text-primary hover:underline"
+          >
+            {item.name}
+          </a>
+        ) : (
+          <p className="font-display text-base font-semibold">{item.name}</p>
+        )}
+        <p className="mt-1 text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
+          {item.vehicle}
+        </p>
+      </div>
     </article>
   );
 }
 
 export function Testimonials() {
   const [paused, setPaused] = useState(false);
-  const track = [...testimonials, ...testimonials];
+  const track = [...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section className="section-pad relative overflow-hidden">
@@ -82,10 +89,39 @@ export function Testimonials() {
             Trusted by drivers <span className="text-chrome">across Oldham</span>
           </h2>
         </Reveal>
+
+        <Reveal className="mx-auto mt-8 max-w-3xl">
+          <div className="glass mx-auto flex flex-col items-center justify-center gap-5 rounded-[var(--radius-3xl)] px-7 py-6 shadow-[var(--shadow-luxe)] sm:flex-row sm:gap-8">
+            <div className="flex items-center gap-4">
+              <span className="font-display text-4xl font-bold leading-none text-chrome">5.0</span>
+              <div className="flex flex-col gap-1.5">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-4 fill-[#f5b301] text-[#f5b301]" />
+                  ))}
+                </div>
+                <span className="flex items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
+                  <Info className="size-3.5" />
+                  12 reviews
+                </span>
+              </div>
+            </div>
+            <span className="hidden h-10 w-px bg-border/60 sm:block" />
+            <a
+              href={REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-red"
+            >
+              All Reviews
+              <ArrowUpRight className="size-4" />
+            </a>
+          </div>
+        </Reveal>
       </div>
 
       <div
-        className="relative mt-8 overflow-x-hidden overflow-y-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="relative mt-6 overflow-x-clip overflow-y-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={() => setPaused(true)}
@@ -93,7 +129,7 @@ export function Testimonials() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent sm:w-28" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent sm:w-28" />
         <div
-          className="flex w-max gap-6 px-6 py-10"
+          className="flex w-max items-stretch gap-6 px-6 py-12"
           style={{
             animation: "marquee-x 44s linear infinite",
             animationPlayState: paused ? "paused" : "running",
