@@ -11,7 +11,6 @@ import {
   Disc3,
   Gauge,
   HandCoins,
-  Handshake,
   HeartHandshake,
   Phone,
   Search,
@@ -123,45 +122,6 @@ const services = [
     image: svcRebuild,
     title: "Engine Rebuilds",
     copy: "Complete engine rebuilding solutions designed to restore performance and extend engine life.",
-  },
-];
-
-const trustPoints = [
-  {
-    icon: Wrench,
-    title: "Skilled & Qualified Technicians",
-    copy: "Factory-trained hands on every vehicle that enters the workshop.",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: Gauge,
-    title: "Modern Equipment",
-    copy: "Dealer-level diagnostics and calibrated tooling.",
-    span: "",
-  },
-  {
-    icon: Cog,
-    title: "Quality Replacement Parts",
-    copy: "OEM and premium-grade components only.",
-    span: "",
-  },
-  {
-    icon: HandCoins,
-    title: "Affordable Pricing",
-    copy: "Premium workmanship without dealership markups.",
-    span: "",
-  },
-  {
-    icon: Handshake,
-    title: "Honest Recommendations",
-    copy: "We only advise the work your vehicle genuinely needs.",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: BadgeCheck,
-    title: "High-Quality Workmanship",
-    copy: "Finished to a standard we'd accept on our own cars.",
-    span: "",
   },
 ];
 
