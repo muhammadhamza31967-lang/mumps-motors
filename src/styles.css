@@ -346,3 +346,78 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* ---- Cinematic automotive section background ---- */
+@utility cinema-base {
+  background:
+    radial-gradient(120% 80% at 50% -10%, oklch(0.24 0.01 250 / 0.9) 0%, transparent 60%),
+    linear-gradient(165deg, #101315 0%, #0b0b0b 45%, #121517 100%);
+}
+
+@utility cinema-metal {
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    oklch(1 0 0 / 0.035) 38%,
+    oklch(1 0 0 / 0.07) 48%,
+    oklch(1 0 0 / 0.03) 58%,
+    transparent 100%
+  );
+  background-size: 260% 100%;
+  animation: metal-pan 26s linear infinite;
+}
+
+@utility cinema-glow-red {
+  background: radial-gradient(circle, oklch(0.532 0.235 28.5 / 0.30) 0%, transparent 70%);
+  filter: blur(40px);
+  animation: ambient-drift 34s ease-in-out infinite;
+}
+
+@utility cinema-glow-blue {
+  background: radial-gradient(circle, oklch(0.694 0.072 236.4 / 0.24) 0%, transparent 70%);
+  filter: blur(40px);
+  animation: ambient-drift-2 42s ease-in-out infinite;
+}
+
+@utility cinema-streak {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.532 0.235 28.5 / 0.55) 45%,
+    oklch(0.905 0.004 197.1 / 0.35) 60%,
+    transparent 100%
+  );
+  animation: streak-slide 18s linear infinite;
+}
+
+@keyframes metal-pan {
+  from { background-position: 0% 0; }
+  to { background-position: 260% 0; }
+}
+
+@keyframes ambient-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.75; }
+  50% { transform: translate3d(6%, -4%, 0) scale(1.12); opacity: 1; }
+}
+
+@keyframes ambient-drift-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); opacity: 0.6; }
+  50% { transform: translate3d(-7%, 5%, 0) scale(1); opacity: 0.95; }
+}
+
+@keyframes streak-slide {
+  0% { transform: translateX(-60%); opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinema-metal,
+  .cinema-glow-red,
+  .cinema-glow-blue,
+  .cinema-streak {
+    animation: none !important;
+  }
+  .cinema-streak { opacity: 0.25; }
+}
