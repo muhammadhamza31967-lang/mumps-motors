@@ -48,7 +48,7 @@ function Contact() {
   }
 
   return (
-    <section className="relative overflow-hidden pb-24 pt-40 lg:pb-32 lg:pt-48">
+    <section className="relative overflow-hidden pb-14 pt-32 lg:pb-20 lg:pt-40">
       <div className="pointer-events-none absolute -left-40 top-40 size-[34rem] rounded-full bg-primary/12 blur-[150px]" />
       <div className="pointer-events-none absolute -right-40 bottom-0 size-[30rem] rounded-full bg-accent/10 blur-[150px]" />
       <img
@@ -73,7 +73,7 @@ function Contact() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid items-stretch gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal className="h-full">
             <div className="flex h-full flex-col gap-4">
               <div className="luxe-card flex items-start gap-4 p-5">

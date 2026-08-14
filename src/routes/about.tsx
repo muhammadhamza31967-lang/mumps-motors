@@ -58,7 +58,7 @@ function About() {
           aria-hidden
           className="pointer-events-none absolute right-0 top-24 w-[40rem] max-w-none opacity-[0.05]"
         />
-        <div className="shell relative pb-24 pt-44 lg:pb-32 lg:pt-52">
+        <div className="shell relative pb-14 pt-32 lg:pb-20 lg:pt-40">
           <Reveal>
             <span className="eyebrow">
               <span className="bg-gradient-red h-px w-10" />
@@ -118,7 +118,7 @@ function About() {
       <section className="section-pad relative overflow-hidden bg-surface/50">
         <div className="pointer-events-none absolute -right-40 top-0 size-[32rem] rounded-full bg-primary/10 blur-[150px]" />
         <div className="pointer-events-none absolute -left-40 bottom-0 size-[30rem] rounded-full bg-accent/10 blur-[150px]" />
-        <div className="shell relative space-y-20 lg:space-y-28">
+        <div className="shell relative space-y-14 lg:space-y-20">
           {[
             {
               icon: Target,
@@ -192,7 +192,7 @@ function About() {
               What every job is measured against
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, i) => (
               <Reveal key={value.title} delay={i * 0.07}>
                 <article className="luxe-card h-full p-7">

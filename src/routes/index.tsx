@@ -24,6 +24,7 @@ import { QuoteCta } from "@/components/sections/QuoteCta";
 import { Faq } from "@/components/sections/Faq";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { logoUrl } from "@/components/brand/Logo";
+import { site } from "@/lib/site";
 import heroGarage from "@/assets/hero-garage.jpg";
 import heroCar from "@/assets/hero-car.png";
 import heroCar2 from "@/assets/hero-car-2.png";
@@ -191,7 +192,7 @@ function Home() {
           className="pointer-events-none absolute -right-24 top-1/2 w-[52rem] max-w-none -translate-y-1/2 opacity-[0.05] mix-blend-screen"
         />
 
-        <div className="shell relative grid min-h-[100svh] items-center gap-12 pb-24 pt-44 sm:pt-48 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10 lg:pb-28 lg:pt-44">
+        <div className="shell relative grid min-h-[100svh] items-center gap-12 pb-16 pt-32 sm:pt-36 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10 lg:pb-20 lg:pt-36">
           <motion.div style={{ opacity: fade }}>
             <motion.span
               className="eyebrow"
@@ -223,7 +224,7 @@ function Home() {
                 Request Free Quote
                 <ArrowRight className="size-4" />
               </button>
-              <a href="tel:+27600000000" className="btn-ghost">
+              <a href={site.phoneHref} className="btn-ghost">
                 <Phone className="size-4" />
                 Call Now
               </a>
@@ -286,7 +287,7 @@ function Home() {
 
       {/* TRUST BAR */}
       <section className="relative border-y border-white/8 bg-surface/70">
-        <div className="shell grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="shell grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-5">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08} className="text-center lg:text-left">
               <p className="font-display text-4xl font-bold text-chrome sm:text-5xl">
@@ -372,7 +373,7 @@ function Home() {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
               <Reveal
                 key={service.title}
@@ -448,7 +449,7 @@ function Home() {
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {whyChoose.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.06}>
                 <article className="luxe-card animated-border h-full p-8">
