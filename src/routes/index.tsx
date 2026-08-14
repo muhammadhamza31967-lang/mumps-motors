@@ -11,7 +11,6 @@ import {
   Disc3,
   Gauge,
   HandCoins,
-  Handshake,
   HeartHandshake,
   Phone,
   Search,
@@ -123,45 +122,6 @@ const services = [
     image: svcRebuild,
     title: "Engine Rebuilds",
     copy: "Complete engine rebuilding solutions designed to restore performance and extend engine life.",
-  },
-];
-
-const trustPoints = [
-  {
-    icon: Wrench,
-    title: "Skilled & Qualified Technicians",
-    copy: "Factory-trained hands on every vehicle that enters the workshop.",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: Gauge,
-    title: "Modern Equipment",
-    copy: "Dealer-level diagnostics and calibrated tooling.",
-    span: "",
-  },
-  {
-    icon: Cog,
-    title: "Quality Replacement Parts",
-    copy: "OEM and premium-grade components only.",
-    span: "",
-  },
-  {
-    icon: HandCoins,
-    title: "Affordable Pricing",
-    copy: "Premium workmanship without dealership markups.",
-    span: "",
-  },
-  {
-    icon: Handshake,
-    title: "Honest Recommendations",
-    copy: "We only advise the work your vehicle genuinely needs.",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: BadgeCheck,
-    title: "High-Quality Workmanship",
-    copy: "Finished to a standard we'd accept on our own cars.",
-    span: "",
   },
 ];
 
@@ -466,8 +426,17 @@ function Home() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="section-pad relative overflow-hidden">
-        <div className="pointer-events-none absolute -left-40 top-20 size-[32rem] rounded-full bg-accent/10 blur-[140px]" />
+      <section className="cinema-base section-pad relative overflow-hidden">
+        {/* layered cinematic background */}
+        <div className="cinema-metal pointer-events-none absolute inset-0" />
+        <div className="grid-noise pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(75%_65%_at_50%_40%,#000_0%,transparent_100%)]" />
+        <div className="cinema-glow-red pointer-events-none absolute -left-32 top-0 size-[38rem] rounded-full" />
+        <div className="cinema-glow-blue pointer-events-none absolute -right-40 bottom-[-10rem] size-[34rem] rounded-full" />
+        <div className="cinema-streak pointer-events-none absolute left-0 top-[22%] h-px w-1/2" />
+        <div className="cinema-streak pointer-events-none absolute left-0 top-[68%] h-px w-1/3 [animation-delay:-9s] [animation-duration:24s]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_70%_at_50%_50%,transparent_0%,oklch(0.145_0_0_/_0.75)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[var(--gradient-line)] opacity-50" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-[var(--gradient-line)] opacity-30" />
         <div className="shell relative">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">
@@ -488,49 +457,6 @@ function Home() {
                   </span>
                   <h3 className="mt-6 font-display text-xl font-semibold">{item.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST POINTS */}
-      <section className="section-pad relative overflow-hidden bg-surface/50">
-        <div className="grid-noise pointer-events-none absolute inset-0 opacity-30" />
-        <div className="pointer-events-none absolute -right-40 top-10 size-[34rem] rounded-full bg-primary/12 blur-[150px]" />
-        <div className="pointer-events-none absolute -left-40 bottom-0 size-[30rem] rounded-full bg-accent/10 blur-[150px]" />
-        <div className="shell relative">
-          <Reveal className="max-w-2xl">
-            <span className="eyebrow">
-              <span className="bg-gradient-red h-px w-10" />
-              Why Customers Trust Us
-            </span>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold leading-[1.06]">
-              The details that keep drivers coming back
-            </h2>
-          </Reveal>
-          <div className="hairline mt-10 opacity-60" />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {trustPoints.map((point, i) => (
-              <Reveal
-                key={point.title}
-                delay={i * 0.08}
-                y={36}
-                className="h-full"
-              >
-                <article className="glass group relative h-full overflow-hidden rounded-[var(--radius-3xl)] p-8 shadow-[var(--shadow-luxe)] transition-all duration-500 ease-[var(--ease-luxe)] hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
-                  <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/20 opacity-0 blur-[70px] transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[var(--gradient-line)] opacity-40 transition-opacity duration-500 group-hover:opacity-100" />
-                  <span className="relative grid size-16 place-items-center rounded-2xl bg-[var(--gradient-red)] text-white shadow-[0_18px_40px_-18px_oklch(0.532_0.235_28.5_/_0.9)] transition-transform duration-500 ease-[var(--ease-luxe)] group-hover:scale-110">
-                    <point.icon className="size-7" />
-                  </span>
-                  <h3 className="relative mt-7 font-display text-lg font-semibold leading-snug">
-                    {point.title}
-                  </h3>
-                  <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {point.copy}
-                  </p>
                 </article>
               </Reveal>
             ))}
