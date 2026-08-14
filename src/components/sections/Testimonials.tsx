@@ -129,7 +129,7 @@ export function Testimonials() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent sm:w-28" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent sm:w-28" />
         <div
-          className="flex w-max items-stretch gap-6 px-6 py-12"
+          className="flex w-max items-stretch gap-6 px-4 py-8 sm:px-6"
           style={{
             animation: "marquee-x 44s linear infinite",
             animationPlayState: paused ? "paused" : "running",
@@ -141,7 +141,7 @@ export function Testimonials() {
         </div>
       </div>
 
-      <div className="shell relative mt-12 text-center">
+      <div className="shell relative mt-10 text-center">
         <a
           href="https://share.google/U6Wk8tUcp0xwe8rTo"
           target="_blank"

@@ -165,7 +165,7 @@ function Services() {
           aria-hidden
           className="pointer-events-none absolute -right-20 top-28 w-[42rem] max-w-none opacity-[0.05]"
         />
-        <div className="shell relative pb-24 pt-44 lg:pb-32 lg:pt-52">
+        <div className="shell relative pb-14 pt-32 lg:pb-20 lg:pt-40">
           <Reveal>
             <span className="eyebrow">
               <span className="bg-gradient-red h-px w-10" />

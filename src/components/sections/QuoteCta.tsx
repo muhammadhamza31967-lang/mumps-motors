@@ -8,8 +8,8 @@ export function QuoteCta() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="shell relative py-20 lg:py-28">
-        <div className="luxe-card animated-border relative overflow-hidden px-8 py-16 text-center sm:px-16">
+      <div className="shell relative py-14 lg:py-20">
+        <div className="luxe-card animated-border relative overflow-hidden px-6 py-12 text-center sm:px-12 lg:px-16">
           <div className="pointer-events-none absolute inset-x-0 -top-28 mx-auto h-56 w-[36rem] rounded-full bg-primary/35 blur-[110px]" />
           <img
             src={logoUrl}

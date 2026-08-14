@@ -31,7 +31,7 @@ export function Faq({
           </h2>
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-4xl gap-4">
+        <div className="mx-auto mt-10 grid max-w-4xl gap-4">
           {items.map((item, i) => {
             const isOpen = open === i;
             return (
