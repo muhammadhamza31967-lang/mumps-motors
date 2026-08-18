@@ -47,3 +47,10 @@ export function buildWhatsAppUrl(title: string, fields: [string, string][]) {
   ];
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
+
+// Popup blockers on plain localhost/dev often reject window.open from a submit
+// handler; fall back to a same-tab navigation so submission never silently fails.
+export function openWhatsApp(url: string) {
+  const win = window.open(url, "_blank", "noopener,noreferrer");
+  if (!win) window.location.href = url;
+}
