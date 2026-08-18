@@ -23,7 +23,7 @@ export function Footer() {
     <footer className="bg-gradient-night relative overflow-hidden border-t border-white/8">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-primary/12 blur-[120px]" />
       <div className="shell relative pb-11 pt-16 lg:pb-16 lg:pt-24">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.2fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo className="h-14 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
@@ -96,21 +96,6 @@ export function Footer() {
                 {site.address}
               </li>
             </ul>
-
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="mt-7 flex items-center gap-2 rounded-full border border-white/12 bg-white/5 p-1.5"
-            >
-              <input
-                type="email"
-                placeholder="Newsletter email"
-                aria-label="Newsletter email"
-                className="min-w-0 flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-muted-foreground/70"
-              />
-              <button type="submit" className="btn-red !px-5 !py-2.5 !text-[0.65rem]">
-                Join
-              </button>
-            </form>
           </div>
         </div>
 
