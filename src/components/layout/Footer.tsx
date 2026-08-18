@@ -96,21 +96,6 @@ export function Footer() {
                 {site.address}
               </li>
             </ul>
-
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="mt-7 flex items-center gap-2 rounded-full border border-white/12 bg-white/5 p-1.5"
-            >
-              <input
-                type="email"
-                placeholder="Newsletter email"
-                aria-label="Newsletter email"
-                className="min-w-0 flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-muted-foreground/70"
-              />
-              <button type="submit" className="btn-red !px-5 !py-2.5 !text-[0.65rem]">
-                Join
-              </button>
-            </form>
           </div>
         </div>
 
