@@ -73,7 +73,10 @@ const QuoteDialog = memo(function QuoteDialog({
   );
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      setForm(emptyForm);
+      return;
+    }
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") close();
     };
