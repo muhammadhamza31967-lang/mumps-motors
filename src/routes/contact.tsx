@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
-import type { FormEvent } from "react";
+import { useCallback, useState, type ChangeEvent, type FormEvent } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { buildWhatsAppUrl, serviceNames, site } from "@/lib/site";
+import { buildWhatsAppUrl, openWhatsApp, serviceNames, site } from "@/lib/site";
 import { logoUrl } from "@/components/brand/Logo";
 
 export const Route = createFileRoute("/contact")({
@@ -29,23 +29,45 @@ export const Route = createFileRoute("/contact")({
 const field =
   "w-full rounded-xl border border-white/12 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition focus:border-primary/70 focus:ring-2 focus:ring-primary/25";
 
+const emptyForm = {
+  name: "",
+  phone: "",
+  email: "",
+  make: "",
+  model: "",
+  service: "",
+  date: "",
+  notes: "",
+};
+
 function Contact() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const get = (key: string) => String(data.get(key) ?? "");
-    const url = buildWhatsAppUrl("New Service Enquiry", [
-      ["Full Name", get("name")],
-      ["Phone Number", get("phone")],
-      ["Email", get("email")],
-      ["Vehicle Make", get("make")],
-      ["Vehicle Model", get("model")],
-      ["Service Required", get("service")],
-      ["Preferred Booking Date", get("date")],
-      ["Additional Information", get("notes")],
-    ]);
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
+  const [form, setForm] = useState(emptyForm);
+
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { name, value } = event.target;
+      setForm((prev) => ({ ...prev, [name]: value }));
+    },
+    [],
+  );
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const url = buildWhatsAppUrl("New Service Enquiry", [
+        ["Full Name", form.name],
+        ["Phone Number", form.phone],
+        ["Email", form.email],
+        ["Vehicle Make", form.make],
+        ["Vehicle Model", form.model],
+        ["Service Required", form.service],
+        ["Preferred Booking Date", form.date],
+        ["Additional Information", form.notes],
+      ]);
+      openWhatsApp(url);
+    },
+    [form],
+  );
 
   return (
     <section className="relative overflow-hidden pb-14 pt-32 lg:pb-20 lg:pt-40">
