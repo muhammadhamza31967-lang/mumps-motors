@@ -2,14 +2,17 @@ import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import {
   createContext,
+  memo,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
+  type ChangeEvent,
   type FormEvent,
   type ReactNode,
 } from "react";
-import { buildWhatsAppUrl, serviceNames } from "@/lib/site";
+import { buildWhatsAppUrl, openWhatsApp, serviceNames } from "@/lib/site";
 import { Logo } from "@/components/brand/Logo";
 
 type QuoteContextValue = { open: () => void; close: () => void };
@@ -22,34 +25,89 @@ export function useQuote() {
 const fieldBase =
   "w-full rounded-xl border border-white/12 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition focus:border-primary/70 focus:bg-white/8 focus:ring-2 focus:ring-primary/25";
 
+const emptyForm = {
+  name: "",
+  phone: "",
+  email: "",
+  make: "",
+  model: "",
+  reg: "",
+  service: "",
+  date: "",
+  notes: "",
+};
+
+type QuoteForm = typeof emptyForm;
+
 export function QuoteProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const open = useCallback(() => setIsOpen(true), []);
   const close = useCallback(() => setIsOpen(false), []);
   const value = useMemo(() => ({ open, close }), [open, close]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const get = (key: string) => String(data.get(key) ?? "");
-    const url = buildWhatsAppUrl("New Quote Request", [
-      ["Full Name", get("name")],
-      ["Phone Number", get("phone")],
-      ["Email Address", get("email")],
-      ["Vehicle Make", get("make")],
-      ["Vehicle Model", get("model")],
-      ["Registration Number", get("reg")],
-      ["Service Required", get("service")],
-      ["Preferred Booking Date", get("date")],
-      ["Additional Information", get("notes")],
-    ]);
-    window.open(url, "_blank", "noopener,noreferrer");
-    close();
-  }
-
   return (
     <QuoteContext.Provider value={value}>
       {children}
+      <QuoteDialog isOpen={isOpen} close={close} />
+    </QuoteContext.Provider>
+  );
+}
+
+const QuoteDialog = memo(function QuoteDialog({
+  isOpen,
+  close,
+}: {
+  isOpen: boolean;
+  close: () => void;
+}) {
+  const [form, setForm] = useState<QuoteForm>(emptyForm);
+
+  const handleChange = useCallback(
+    (
+      event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => {
+      const { name, value } = event.target;
+      setForm((prev) => ({ ...prev, [name]: value }));
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previous;
+    };
+  }, [isOpen, close]);
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const url = buildWhatsAppUrl("New Quote / Booking Request", [
+        ["Full Name", form.name],
+        ["Phone Number", form.phone],
+        ["Email Address", form.email],
+        ["Vehicle Make", form.make],
+        ["Vehicle Model", form.model],
+        ["Registration Number", form.reg],
+        ["Service Required", form.service],
+        ["Preferred Booking Date", form.date],
+        ["Additional Information", form.notes],
+      ]);
+      openWhatsApp(url);
+      setForm(emptyForm);
+      close();
+    },
+    [form, close],
+  );
+
+  return (
       <AnimatePresence>
         {isOpen ? (
           <motion.div
@@ -86,22 +144,60 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                 Send us your vehicle details and we&apos;ll reply on WhatsApp with a tailored quote.
               </p>
               <form onSubmit={handleSubmit} className="mt-7 grid gap-4 sm:grid-cols-2">
-                <input name="name" required placeholder="Full Name" className={fieldBase} />
-                <input name="phone" required placeholder="Phone Number" className={fieldBase} />
+                <input
+                  name="name"
+                  required
+                  placeholder="Full Name"
+                  className={fieldBase}
+                  value={form.name}
+                  onChange={handleChange}
+                />
+                <input
+                  name="phone"
+                  required
+                  placeholder="Phone Number"
+                  className={fieldBase}
+                  value={form.phone}
+                  onChange={handleChange}
+                />
                 <input
                   name="email"
                   type="email"
                   placeholder="Email Address"
                   className={`${fieldBase} sm:col-span-2`}
+                  value={form.email}
+                  onChange={handleChange}
                 />
-                <input name="make" required placeholder="Vehicle Make" className={fieldBase} />
-                <input name="model" required placeholder="Vehicle Model" className={fieldBase} />
+                <input
+                  name="make"
+                  required
+                  placeholder="Vehicle Make"
+                  className={fieldBase}
+                  value={form.make}
+                  onChange={handleChange}
+                />
+                <input
+                  name="model"
+                  required
+                  placeholder="Vehicle Model"
+                  className={fieldBase}
+                  value={form.model}
+                  onChange={handleChange}
+                />
                 <input
                   name="reg"
                   placeholder="Registration Number (Optional)"
                   className={fieldBase}
+                  value={form.reg}
+                  onChange={handleChange}
                 />
-                <select name="service" required defaultValue="" className={fieldBase}>
+                <select
+                  name="service"
+                  required
+                  className={fieldBase}
+                  value={form.service}
+                  onChange={handleChange}
+                >
                   <option value="" disabled>
                     Service Required
                   </option>
@@ -113,13 +209,21 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                 </select>
                 <label className="sm:col-span-2 grid gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Preferred Booking Date
-                  <input name="date" type="date" className={fieldBase} />
+                  <input
+                    name="date"
+                    type="date"
+                    className={fieldBase}
+                    value={form.date}
+                    onChange={handleChange}
+                  />
                 </label>
                 <textarea
                   name="notes"
                   rows={4}
                   placeholder="Additional Information"
                   className={`${fieldBase} sm:col-span-2 resize-none`}
+                  value={form.notes}
+                  onChange={handleChange}
                 />
                 <button
                   type="submit"
@@ -132,6 +236,5 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
           </motion.div>
         ) : null}
       </AnimatePresence>
-    </QuoteContext.Provider>
   );
-}
+});
