@@ -179,12 +179,53 @@ function Contact() {
                 Submitting opens WhatsApp with your details pre-filled.
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <input name="name" required placeholder="Full Name" className={field} />
-                <input name="phone" required placeholder="Phone Number" className={field} />
-                <input name="email" type="email" placeholder="Email" className={`${field} sm:col-span-2`} />
-                <input name="make" required placeholder="Vehicle Make" className={field} />
-                <input name="model" required placeholder="Vehicle Model" className={field} />
-                <select name="service" required defaultValue="" className={`${field} sm:col-span-2`}>
+                <input
+                  name="name"
+                  required
+                  placeholder="Full Name"
+                  className={field}
+                  value={form.name}
+                  onChange={handleChange}
+                />
+                <input
+                  name="phone"
+                  required
+                  placeholder="Phone Number"
+                  className={field}
+                  value={form.phone}
+                  onChange={handleChange}
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className={`${field} sm:col-span-2`}
+                  value={form.email}
+                  onChange={handleChange}
+                />
+                <input
+                  name="make"
+                  required
+                  placeholder="Vehicle Make"
+                  className={field}
+                  value={form.make}
+                  onChange={handleChange}
+                />
+                <input
+                  name="model"
+                  required
+                  placeholder="Vehicle Model"
+                  className={field}
+                  value={form.model}
+                  onChange={handleChange}
+                />
+                <select
+                  name="service"
+                  required
+                  className={`${field} sm:col-span-2`}
+                  value={form.service}
+                  onChange={handleChange}
+                >
                   <option value="" disabled>
                     Service Required
                   </option>
@@ -196,13 +237,21 @@ function Contact() {
                 </select>
                 <label className="sm:col-span-2 grid gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Preferred Booking Date
-                  <input name="date" type="date" className={field} />
+                  <input
+                    name="date"
+                    type="date"
+                    className={field}
+                    value={form.date}
+                    onChange={handleChange}
+                  />
                 </label>
                 <textarea
                   name="notes"
                   rows={5}
                   placeholder="Additional Information"
                   className={`${field} sm:col-span-2 resize-none`}
+                  value={form.notes}
+                  onChange={handleChange}
                 />
                 <button type="submit" className="btn-red sm:col-span-2 w-full">
                   <Send className="size-4" />
