@@ -23,7 +23,7 @@ export function Footer() {
     <footer className="bg-gradient-night relative overflow-hidden border-t border-white/8">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-primary/12 blur-[120px]" />
       <div className="shell relative pb-11 pt-16 lg:pb-16 lg:pt-24">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.2fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo className="h-14 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
